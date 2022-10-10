@@ -5,3 +5,4 @@ yarn.lock
 
 # Compiled binary
 /build
+coverage
