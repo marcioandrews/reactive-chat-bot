@@ -1,12 +1,22 @@
-import React from "react";
-import { Text, View } from "react-native";
+import { NativeModules, Platform } from 'react-native';
 
-const YourApp = () => {
-  return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Try editing me! 🎉</Text>
-    </View>
-  );
-};
+const LINKING_ERROR =
+  `The package 'reactive-chat-bot' doesn't seem to be linked. Make sure: \n\n` +
+  Platform.select({ ios: "- You have run 'pod install'\n", default: '' }) +
+  '- You rebuilt the app after installing the package\n' +
+  '- You are not using Expo managed workflow\n';
 
-export default YourApp;
+const ReactiveChatBot = NativeModules.ReactiveChatBot
+  ? NativeModules.ReactiveChatBot
+  : new Proxy(
+      {},
+      {
+        get() {
+          throw new Error(LINKING_ERROR);
+        },
+      }
+    );
+
+export function multiply(a: number, b: number): Promise<number> {
+  return ReactiveChatBot.multiply(a, b);
+}
