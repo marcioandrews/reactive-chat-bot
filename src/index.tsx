@@ -17,6 +17,4 @@ const ReactiveChatBot = NativeModules.ReactiveChatBot
       }
     );
 
-export function multiply(a: number, b: number): Promise<number> {
-  return ReactiveChatBot.multiply(a, b);
-}
+export { ChatBot } from "./pages"
