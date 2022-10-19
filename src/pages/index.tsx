@@ -1,1 +1,1 @@
-export * from "./ChatBot/ChatBot"
+export * from "./chatBot/ChatBot"
