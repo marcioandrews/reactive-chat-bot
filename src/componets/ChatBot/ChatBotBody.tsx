@@ -4,7 +4,7 @@ import { Text, StyleSheet } from 'react-native';
 export function ChatBotBody() {
     return (
         <Text style={styles.text}>
-          Teste
+          Teste de mensagem.
         </Text>
     );
 }
