@@ -9,13 +9,13 @@ npm install reactive-chat-bot
 ```
 
 ## Usage
-Esta biblioteca tem o intuido de criar um chatbot com arvores de respostas.
+Esta biblioteca tem o intuido de criar um chatbot com árvores de respostas.
 ```js
-import { multiply } from 'reactive-chat-bot';
+import { ChatBot } from 'reactive-chat-bot';
 
 // ...
 
-const result = await multiply(3, 7);
+<ChatBot />
 ```
 
 ## Contributing
