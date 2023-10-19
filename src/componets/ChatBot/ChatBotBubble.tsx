@@ -1,9 +1,15 @@
 import React from 'react';
-import { View, StyleProp, Text as RNText, TextProps as RNTextProps, TextStyle } from "react-native"
+import {
+  View,
+  StyleProp,
+  Text as RNText,
+  TextProps as RNTextProps,
+  TextStyle,
+} from 'react-native';
 import { colors } from 'src/theme';
 
-type Sizes = keyof typeof $sizeStyles
-type Presets = keyof typeof $presets
+type Sizes = keyof typeof $sizeStyles;
+type Presets = keyof typeof $presets;
 
 const $sizeStyles = {
   xxl: { fontSize: 36, lineHeight: 44 } as TextStyle,
@@ -13,30 +19,24 @@ const $sizeStyles = {
   sm: { fontSize: 16, lineHeight: 24 } as TextStyle,
   xs: { fontSize: 14, lineHeight: 21 } as TextStyle,
   xxs: { fontSize: 12, lineHeight: 18 } as TextStyle,
-}
+};
 
 export interface BubbleProps extends RNTextProps {
-
   // tx?: TxKeyPath
 
-  text?: string
-  
-  style?: StyleProp<TextStyle>
+  text?: string;
 
-  preset?: Presets
+  style?: StyleProp<TextStyle>;
 
+  preset?: Presets;
 
-  size?: Sizes
+  size?: Sizes;
 
-  children?: React.ReactNode
+  children?: React.ReactNode;
 }
 
 export function ChatBotBubble(props: BubbleProps) {
-    return (
-        <View >
-      
-        </View>
-    );
+  return <View></View>;
 }
 
 // const styles = StyleSheet.create({
@@ -44,9 +44,6 @@ export function ChatBotBubble(props: BubbleProps) {
 //     backgroundColor: 'blue',
 //   }
 // });
-
-
-
 
 // export function Text(props: TextProps) {
 //   // const { weight, size, tx, txOptions, text, children, style: $styleOverride, ...rest } = props
@@ -70,23 +67,21 @@ export function ChatBotBubble(props: BubbleProps) {
 //   )
 // }
 
-
-
 const $baseStyle: StyleProp<TextStyle> = [
   $sizeStyles.sm,
   { color: colors.text },
-]
+];
 
 const $presets = {
   default: $baseStyle,
 
-  bold: [$baseStyle, ] as StyleProp<TextStyle>,
+  bold: [$baseStyle] as StyleProp<TextStyle>,
 
-  heading: [$baseStyle, $sizeStyles.xxl, ] as StyleProp<TextStyle>,
+  heading: [$baseStyle, $sizeStyles.xxl] as StyleProp<TextStyle>,
 
-  subheading: [$baseStyle, $sizeStyles.lg, ] as StyleProp<TextStyle>,
+  subheading: [$baseStyle, $sizeStyles.lg] as StyleProp<TextStyle>,
 
-  formLabel: [$baseStyle, ] as StyleProp<TextStyle>,
+  formLabel: [$baseStyle] as StyleProp<TextStyle>,
 
-  formHelper: [$baseStyle, $sizeStyles.sm, ] as StyleProp<TextStyle>,
-}
+  formHelper: [$baseStyle, $sizeStyles.sm] as StyleProp<TextStyle>,
+};

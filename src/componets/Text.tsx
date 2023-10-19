@@ -1,21 +1,25 @@
-import React from "react"
-import { StyleProp, Text as RNText, TextProps as RNTextProps, TextStyle } from "react-native"
-import { colors } from "../theme"
+import React from 'react';
+import {
+  StyleProp,
+  Text as RNText,
+  TextProps as RNTextProps,
+  TextStyle,
+} from 'react-native';
+import { colors } from '../theme';
 
-type Sizes = keyof typeof $sizeStyles
-type Presets = keyof typeof $presets
+type Sizes = keyof typeof $sizeStyles;
+type Presets = keyof typeof $presets;
 
 export interface TextProps extends RNTextProps {
+  text?: string;
 
-  text?: string
+  style?: StyleProp<TextStyle>;
 
-  style?: StyleProp<TextStyle>
+  preset?: Presets;
 
-  preset?: Presets
+  size?: Sizes;
 
-  size?: Sizes
-
-  children?: React.ReactNode
+  children?: React.ReactNode;
 }
 
 /**
@@ -25,22 +29,18 @@ export interface TextProps extends RNTextProps {
  * - [Documentation and Examples](https://github.com/infinitered/ignite/blob/master/docs/Components-Text.md)
  */
 export function Text(props: TextProps) {
-  const { size, text, children, style: $styleOverride, ...rest } = props
+  const { size, text, children, style: $styleOverride, ...rest } = props;
 
-  const content = text || children
+  const content = text || children;
 
-  const preset: Presets = $presets[props.preset] ? props.preset : "default"
-  const $styles = [
-    $presets[preset],
-    $sizeStyles[size],
-    $styleOverride,
-  ]
+  const preset: Presets = $presets[props.preset] ? props.preset : 'default';
+  const $styles = [$presets[preset], $sizeStyles[size], $styleOverride];
 
   return (
     <RNText {...rest} style={$styles}>
       {content}
     </RNText>
-  )
+  );
 }
 
 const $sizeStyles = {
@@ -51,23 +51,23 @@ const $sizeStyles = {
   sm: { fontSize: 16, lineHeight: 24 } as TextStyle,
   xs: { fontSize: 14, lineHeight: 21 } as TextStyle,
   xxs: { fontSize: 12, lineHeight: 18 } as TextStyle,
-}
+};
 
 const $baseStyle: StyleProp<TextStyle> = [
   $sizeStyles.sm,
   { color: colors.text },
-]
+];
 
 const $presets = {
   default: $baseStyle,
 
-  bold: [$baseStyle, ] as StyleProp<TextStyle>,
+  bold: [$baseStyle] as StyleProp<TextStyle>,
 
-  heading: [$baseStyle, $sizeStyles.xxl, ] as StyleProp<TextStyle>,
+  heading: [$baseStyle, $sizeStyles.xxl] as StyleProp<TextStyle>,
 
-  subheading: [$baseStyle, $sizeStyles.lg, ] as StyleProp<TextStyle>,
+  subheading: [$baseStyle, $sizeStyles.lg] as StyleProp<TextStyle>,
 
-  formLabel: [$baseStyle,] as StyleProp<TextStyle>,
+  formLabel: [$baseStyle] as StyleProp<TextStyle>,
 
-  formHelper: [$baseStyle, $sizeStyles.sm,] as StyleProp<TextStyle>,
-}
+  formHelper: [$baseStyle, $sizeStyles.sm] as StyleProp<TextStyle>,
+};
